@@ -44,6 +44,7 @@ class Helper {
     public static function content(){
         $content = DB::table('content')->where('name','!=',null)->first();
 
+        if($content){
         return[
             "wheel"=>url($content->wheel),
             "outwheel"=>url($content->outwheel),
@@ -53,6 +54,18 @@ class Helper {
             "favicon"=>url($content->favicon),
             "music"=>url($content->music),
         ];
+        }else{
+            return[
+                "wheel"=>'',
+                "outwheel"=>'',
+                "logo"=>'',
+                "name"=>'',
+                "background"=>'',
+                "favicon"=>'',
+                "music"=>'',
+            ];
+        }
+
     }
     
 }

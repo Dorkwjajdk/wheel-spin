@@ -2,12 +2,27 @@
 @section('content')
     
  <!-- SOUND TRACK -->
-  <audio autoplay="true" src="{{Helper::content()['music']}}">
+ @if($spin=="false")
+    {{-- <audio autoplay="true" src="{{Helper::content()['music']}}">
 	    Update your browser. Your browser does not support HTML audio
-	</audio>
+	  </audio>
     <div class="hidden">
         <audio id="spinAudio" src="{{Helper::content()['music']}}"></audio>
     </div>
+  @else
+
+  {{-- <audio autoplay>
+    <source src="{{url('document/bink.mp3')}}" type="audio/mpeg">
+    Update your browser. Your browser does not support HTML audio
+  </audio> --}}
+
+  <embed src="{{url('document/bink.mp3')}}" loop="true" autostart="true" width="2" height="0" hidden>
+    <audio controls autoplay hidden>
+        <source src="{{url('document/bink.mp3')}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+  @endif
         	
 <div id="popup-container-history" class="popup-container" style="display: none;">
   <div id="popup-body" class="popup-body" style="height: 563px;">
@@ -178,7 +193,10 @@
     <script type="text/javascript">
          introRotation("{{Helper::rumus_rotasi_start()}}")
     </script>
+
   @endif
+
+
 
   @endpush
   

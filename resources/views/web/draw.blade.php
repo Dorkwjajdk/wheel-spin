@@ -47,6 +47,24 @@
       @endif
 @endif
 
+@if($result_prize->winner==1)
+<audio autoplay="true" loop src="{{url('document/tepuk.mp3')}}">
+    Update your browser. Your browser does not support HTML audio
+  </audio>
+  <div class="hidden">
+      <audio id="spinAudio" src="{{url('document/tepuk.mp3')}}"></audio>
+  </div>
+@else
+
+<audio autoplay="true" loop src="{{url('document/fail.mp3')}}">
+    Update your browser. Your browser does not support HTML audio
+  </audio>
+  <div class="hidden">
+      <audio id="spinAudio" src="{{url('document/fail.mp3')}}"></audio>
+  </div>
+
+@endif
+
 @push('js')
   <script type="text/javascript">
       @if($result_prize->winner==1)

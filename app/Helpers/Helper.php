@@ -36,7 +36,8 @@ class Helper {
 
         //MENGHITUNG KELIPATAN
 
-        $putaran = $start + (360 * 10);
+        // $putaran = $start + (360 * 10);
+        $putaran = (360 - 90) + (360 * 100);
 
         return $putaran;
     }

@@ -57,20 +57,4 @@
     100%{ color: #FFF;        }
 }
 
-.wheelText {
-  font: 16px;
-  font-family: "Arial Black", sans-serif;
-  font-weight:normal;
-  text-align: center;
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 2px 2px 0px rgba(64, 116, 181, 1), 
-               2px -2px 0px rgba(64, 116, 181, 1), 
-			   -2px 2px 0px rgba(64, 116, 181, 1), 
-			   -2px -2px 0px rgba(64, 116, 181, 1), 
-			   2px 0px 0px rgba(64, 116, 181, 1), 
-			   0px 2px 0px rgba(64, 116, 181, 1), 
-			   -2px 0px 0px rgba(64, 116, 181, 1), 
-			   0px -2px 0px rgba(64, 116, 181, 1);
-}
-
 

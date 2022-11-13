@@ -14,10 +14,20 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{url('assets/wheel/img/favicon.ico/ms-icon-144x144.png')}}">
 
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;700;800&family=Public+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
   <body style="background-image: url('{{Helper::content()['background']}}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: black;">
 
 </head>
 <style>
+  .wheelText {
+  font-size: 16px;
+  font-family: 'Prompt', sans-serif;
+  font-weight:900;
+  text-align: center;
+  color: aqua
+}
+
 button.submit {
     font-size: 22px;
     width: 100%;

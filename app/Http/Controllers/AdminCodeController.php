@@ -51,7 +51,7 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Used','name'=>'used','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes;no'];
+			$this->form[] = ['label'=>'Auto Generate Code','name'=>'used','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -267,9 +267,9 @@
 	    public function hook_before_add(&$postdata) {    
 			
 			if($postdata['used'] == 'yes'){
-				$postdata['used'] = 1;
-			}else{
 				$postdata['used'] = 0;
+			}else{
+				$postdata['used'] = 1;
 			}
 	        //Your code here
 			$num = rand(5,7);
@@ -305,9 +305,9 @@
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
 			if($postdata['used'] == 'yes'){
-				$postdata['used'] = 1;
-			}else{
 				$postdata['used'] = 0;
+			}else{
+				$postdata['used'] = 1;
 			}
 
 			$num = rand(5,7);

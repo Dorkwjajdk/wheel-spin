@@ -29,7 +29,8 @@ class WebController extends Controller
             'nama'   => 'required|string',
         ]);
 
-        $_code = Code::where('code',$request->code)->first();
+        $_code = Code::join('draw','code.code','=','draw.code')
+                ->where('draw.code',$request->code)->first();
 
         // MENGECEK APAKAH KODE TERSEDIA
         if($_code){

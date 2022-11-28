@@ -50,11 +50,11 @@
 			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Background','name'=>'background','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Favicon','name'=>'favicon','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'music','name'=>'music','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music','name'=>'music','type'=>'upload','validation'=>'','width'=>'col-sm-10'];
 
-			$this->form[] = ['label'=>'music win','name'=>'music_win','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'music lose','name'=>'music_lose','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'music spin','name'=>'music_spin','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music win','name'=>'music_win','type'=>'upload','validation'=>'','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music lose','name'=>'music_lose','type'=>'upload','validation'=>'','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music spin','name'=>'music_spin','type'=>'upload','validation'=>'','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

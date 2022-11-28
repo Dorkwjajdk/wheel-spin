@@ -22,6 +22,9 @@ class CreateContentTable extends Migration
             $table->string('background')->nullable();
             $table->string('favicon')->nullable();
             $table->string('music')->nullable();
+            $table->string('music_win')->nullable();
+            $table->string('music_lose')->nullable();
+            $table->string('music_spin')->nullable();
             $table->timestamps();
         });
     }

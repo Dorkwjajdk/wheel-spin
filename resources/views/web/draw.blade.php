@@ -48,19 +48,19 @@
 @endif
 
 @if($result_prize->winner==1)
-<audio autoplay="true" loop src="{{url('document/tepuk.mp3')}}">
+<audio autoplay="true" loop src="{{Helper::content()['music_win']}}">
     Update your browser. Your browser does not support HTML audio
   </audio>
   <div class="hidden">
-      <audio id="spinAudio" src="{{url('document/tepuk.mp3')}}"></audio>
+      <audio id="spinAudio" src="{{Helper::content()['music_win']}}"></audio>
   </div>
 @else
 
-<audio autoplay="true" loop src="{{url('document/fail.mp3')}}">
+<audio autoplay="true" loop src="{{Helper::content()['music_lose']}}">
     Update your browser. Your browser does not support HTML audio
   </audio>
   <div class="hidden">
-      <audio id="spinAudio" src="{{url('document/fail.mp3')}}"></audio>
+      <audio id="spinAudio" src="{{Helper::content()['music_lose']}}"></audio>
   </div>
 
 @endif

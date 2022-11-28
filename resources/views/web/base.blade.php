@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="{{Helper::content()['favicon']}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{Helper::content()['favicon']}}">
+
   <link rel="manifest" href="{{url('assets/wheel/img/favicon.ico/manifest.json')}}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="msapplication-TileColor" content="#ffffff">
@@ -16,7 +17,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;700;800&family=Public+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <body style="background-image: url('{{Helper::content()['background']}}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: black;">
+  <body style="background-image: url('{{Helper::content()['background']}}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: black;background-attachment: fixed;">
 
 </head>
 <style>
@@ -26,6 +27,18 @@
   font-weight:900;
   text-align: center;
   color: aqua
+}
+
+.btn-back{
+    font-size: 22px;
+    width: 100%;
+    background: linear-gradient(to bottom, #05c330 16%, #05c330 44%, #05c330 99%);
+    color:rgb(0, 0, 0);
+    padding: 5px 15px;
+    border:0px;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 30px;
+    font-weight: bolder;
 }
 
 button.submit {
@@ -140,8 +153,10 @@ input.submit {
 
   <div class="container">
 <div class="row h-100 mx-auto" style="height:100%!important">
-  <a href="{{url('/')}}">
+  <a href="{{url('/')}}" style="margin-bottom: 10px">
+
     <img alt="Voucher Wheel logo" class="mx-auto d-block img-fluid logo-mobile" src="{{Helper::content()['logo']}}">
+
   </a>
   <!-- Wheel -->
   <div class="col-sm-7 my-auto" style="padding:0px">
@@ -168,6 +183,16 @@ input.submit {
 </div>
 
 </div>
+
+<!-- LIVE CHAT -->
+<!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+  window.__lc = window.__lc || {};
+  window.__lc.license = 14765202;
+  ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/14765202/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
 
 
 <script charset="utf-8" src="https://d3js.org/d3.v3.min.js"></script>
@@ -206,7 +231,7 @@ let url_wheel = "<?php echo Helper::content()['wheel']; ?>";
 
 let url_outwheel = "<?php echo Helper::content()['outwheel']; ?>";
 
-let music = "<?php echo Helper::content()['music']; ?>";
+let music = "<?php echo Helper::content()['music_spin']; ?>";
 
 let prizes = [
   @foreach($prize as $key)

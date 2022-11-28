@@ -36,7 +36,10 @@
 			$this->col[] = ["label"=>"Logo","name"=>"logo","image"=>true];
 			$this->col[] = ["label"=>"Background","name"=>"background","image"=>true];
 			$this->col[] = ["label"=>"Favicon","name"=>"favicon","image"=>true];
-			$this->col[] = ["label"=>"Music","name"=>"music"];
+			$this->col[] = ["label"=>"Music Home","name"=>"music"];
+			$this->col[] = ["label"=>"Music Win","name"=>"music_win"];
+			$this->col[] = ["label"=>"Music Lose","name"=>"music_lose"];
+			$this->col[] = ["label"=>"Music Spin","name"=>"music_spin"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -48,6 +51,10 @@
 			$this->form[] = ['label'=>'Background','name'=>'background','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Favicon','name'=>'favicon','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'music','name'=>'music','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+
+			$this->form[] = ['label'=>'music win','name'=>'music_win','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music lose','name'=>'music_lose','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'music spin','name'=>'music_spin','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

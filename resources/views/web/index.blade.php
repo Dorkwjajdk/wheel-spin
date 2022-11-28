@@ -3,22 +3,10 @@
     
  <!-- SOUND TRACK -->
  @if($spin=="false")
-    {{-- <audio autoplay="true" src="{{Helper::content()['music']}}">
-	    Update your browser. Your browser does not support HTML audio
-	  </audio>
-    <div class="hidden">
-        <audio id="spinAudio" src="{{Helper::content()['music']}}"></audio>
-    </div>
-  @else
 
-  {{-- <audio autoplay>
-    <source src="{{url('document/bink.mp3')}}" type="audio/mpeg">
-    Update your browser. Your browser does not support HTML audio
-  </audio> --}}
-
-  <embed src="{{url('document/bink.mp3')}}" loop="true" autostart="true" width="2" height="0" hidden>
+  <embed src="{{Helper::content()['music']}}" loop="true" autostart="true" width="2" height="0" hidden>
     <audio controls autoplay hidden>
-        <source src="{{url('document/bink.mp3')}}" type="audio/mpeg">
+        <source src="{{Helper::content()['music']}}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -127,6 +115,12 @@
           <div class="col-md-12" style="margin-top: 20px;">
                 <input type="button" value="Syarat & Ketentuan" class="submit" onclick="syarat()"return false;></input>
           </div>
+
+          <div class="col-md-12" style="margin-top: 20px;">
+            <input type="button" value="KEMBALI KE SITUS" class="btn-back" 
+            onClick="location.href='https://langkah4d.net/'"></input>
+         </div>
+
       </div>
   @endif
 

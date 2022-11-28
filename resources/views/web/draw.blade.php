@@ -74,6 +74,7 @@
       console.log("Return to result", "{{$result_draw->rotation}}");
       spinToResult("{{ $result_draw->rotation }}");
   </script>
+
 @endpush
 
 

@@ -5,7 +5,7 @@
  @if($spin=="false")
 
   <embed src="{{Helper::content()['music']}}" loop="true" autostart="true" width="2" height="0" hidden>
-    <audio controls autoplay hidden>
+    <audio controls autoplay hidden id="my_audio" loop="loop">
         <source src="{{Helper::content()['music']}}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -189,6 +189,29 @@
     </script>
 
   @endif
+
+  <script type="text/javascript">
+    let music_home = document.getElementById("my_audio"); 
+    document.addEventListener("DOMContentLoaded", function(){
+       $(".swal2-modal").css('background-color', '#000');
+       Swal.fire({
+            title: 'Selamat Datang di Lucky Spin Wheels!!!',
+            html: '<p>Kami selaku pihak Lucky Spin Wheels terlebih dahulu mengucapkan selamat kepada setiap member yang</p>'+
+                  '<p>memiliki tiket untuk berkesempatan memenangkan hadiah menarik yang ditawarkan di Lucky Spin Wheels</p>'+
+                  '<p>Lucky Spin ini, Untuk kalian yang memiliki tiket silahkan masukkan ke kolom kode yang disediakan dan klik</p>'+
+                  '<p>tombol spin untuk memulai peruntungan anda.!!!</p>',
+            confirmButtonText:
+            '<i class="fa fa-like"></i>Thank You',
+            confirmButtonColor: 'goldenrod',
+          }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+          music_home.play(); 
+        }})
+    
+    
+    });
+      </script>
 
 
 

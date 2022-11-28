@@ -23,9 +23,9 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
+			$this->button_add = false;
 			$this->button_edit = true;
-			$this->button_delete = true;
+			$this->button_delete =false;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
@@ -64,7 +64,7 @@
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Label','name'=>'label','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Sorter','name'=>'sorter','type'=>'number','validation'=>'required|integer|min:0|unique:prize,sorter','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Sorter','name'=>'sorter','type'=>'number','validation'=>'required|integer|min:0|unique:prize,sorter','width'=>'col-sm-10','readonly'=>true];
 			$this->form[] = ['label'=>'Winner','name'=>'winner','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes;no'];
 			$this->form[] = ['label'=>'Try Again','name'=>'try_again','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes;no'];
 			# END FORM DO NOT REMOVE THIS LINE

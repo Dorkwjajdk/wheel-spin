@@ -190,6 +190,7 @@
 
   @endif
 
+  @if($spin=="false")
   <script type="text/javascript">
     let music_home = document.getElementById("my_audio"); 
     document.addEventListener("DOMContentLoaded", function(){
@@ -211,7 +212,8 @@
     
     
     });
-      </script>
+  </script>
+  @endif
 
 
 

@@ -29,8 +29,8 @@ let myimage = vis.append('image')
     .attr('xlink:href', url_wheel)
     .attr('width', 800)
     .attr('height', 800)
-    .attr('x', -370)
-    .attr('y', -370);
+    .attr('x', -400)
+    .attr('y', -400);
 
 let outwheel = svg.append('image')
     .attr('xlink:href', url_outwheel)

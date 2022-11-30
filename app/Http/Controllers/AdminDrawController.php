@@ -93,7 +93,7 @@
 	        | 
 	        */
 	        $this->sub_module = array();
-			$this->sub_module[] = ['label'=>'History Draw','path'=>'history_draw','parent_columns'=>'nama,code','foreign_key'=>'draw_id','button_color'=>'success','button_icon'=>'fa fa-bars'];
+			$this->sub_module[] = ['label'=>'History Draw','path'=>'history_draw','parent_columns'=>'name,code','foreign_key'=>'draw_id','button_color'=>'success','button_icon'=>'fa fa-bars'];
 
 
 	        /* 

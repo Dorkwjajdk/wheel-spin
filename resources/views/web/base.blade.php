@@ -32,7 +32,7 @@
 .btn-back{
     font-size: 22px;
     width: 100%;
-    background: linear-gradient(to bottom, #05c330 16%, #05c330 44%, #05c330 99%);
+    background: linear-gradient(to bottom, #02abff 16%, #02abff 44%, #02abff 99%);
     color:rgb(0, 0, 0);
     padding: 5px 15px;
     border:0px;

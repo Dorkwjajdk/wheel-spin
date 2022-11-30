@@ -4,77 +4,56 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
-	use Illuminate\Support\Str;
-	use App\Prize;
-	use App\Draw;
-	use App\History_Draw;
-	use App\Code;
-	use Helper;
 
-	class AdminPrizeController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminCmsUsers1Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "name";
 			$this->limit = "20";
-			$this->orderby = "sorter,asc";
+			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
-			$this->button_delete =true;
+			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "prize";
+			$this->table = "cms_users";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Sorter","name"=>"sorter"];
-			$this->col[] = ["label"=>"Label","name"=>"label"];
-			$this->col[] = ["label"=>"Winner","name"=>"winner","callback"=>function($row) {
-				if($row->winner == 1){
-					$img = url('assets/img/done.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}else{
-					$img = url('assets/img/close.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}
-				return $r;
-				}];
-			$this->col[] = ["label"=>"Try Again","name"=>"try_again","callback"=>function($row) {
-				if($row->try_again == 1){
-					$img = url('assets/img/done.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}else{
-					$img = url('assets/img/close.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}
-				return $r;
-				}];
-			
+			$this->col[] = ["label"=>"Name","name"=>"name"];
+			$this->col[] = ["label"=>"Photo","name"=>"photo","image"=>true];
+			$this->col[] = ["label"=>"Email","name"=>"email"];
+			$this->col[] = ["label"=>"Privileges","name"=>"id_cms_privileges","join"=>"cms_privileges,name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Label','name'=>'label','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Sorter','name'=>'sorter','type'=>'number','validation'=>'required|integer|min:0|unique:prize,sorter','width'=>'col-sm-10','readonly'=>true];
-			$this->form[] = ['label'=>'Winner','name'=>'winner','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes;no'];
-			$this->form[] = ['label'=>'Try Again','name'=>'try_again','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'yes;no'];
+			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Photo','name'=>'photo','type'=>'upload','validation'=>'image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:cms_users','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
+			$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:3|max:32','width'=>'col-sm-10','help'=>'Minimum 5 characters. Please leave empty if you did not change the password.'];
+			$this->form[] = ['label'=>'Cms Privileges','name'=>'id_cms_privileges','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_privileges,name','datatable_where'=>'id = 2'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Label","name"=>"label","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Winner","name"=>"winner","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Try Again","name"=>"try_again","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Sorter","name"=>"sorter","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
+			//$this->form[] = ["label"=>"Photo","name"=>"photo","type"=>"upload","required"=>TRUE,"validation"=>"required|image|max:3000","help"=>"File types support : JPG, JPEG, PNG, GIF, BMP"];
+			//$this->form[] = ["label"=>"Email","name"=>"email","type"=>"email","required"=>TRUE,"validation"=>"required|min:1|max:255|email|unique:cms_users","placeholder"=>"Please enter a valid email address"];
+			//$this->form[] = ["label"=>"Password","name"=>"password","type"=>"password","required"=>TRUE,"validation"=>"min:3|max:32","help"=>"Minimum 5 characters. Please leave empty if you did not change the password."];
+			//$this->form[] = ["label"=>"Cms Privileges","name"=>"id_cms_privileges","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"cms_privileges,name"];
+			//$this->form[] = ["label"=>"Status","name"=>"status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
 			# OLD END FORM
 
 			/* 
@@ -262,6 +241,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+			$query->where('id_cms_privileges','!=',1);
 	            
 	    }
 
@@ -284,17 +264,6 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-			if($postdata['winner'] == 'yes'){
-				$postdata['winner'] = 1;
-			}else{
-				$postdata['winner'] = 0;
-			}
-
-			if($postdata['try_again'] == 'yes'){
-				$postdata['try_again'] = 1;
-			}else{
-				$postdata['try_again'] = 0;
-			}
 
 	    }
 
@@ -320,17 +289,6 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-			if($postdata['winner'] == 'yes'){
-				$postdata['winner'] = 1;
-			}else{
-				$postdata['winner'] = 0;
-			}
-
-			if($postdata['try_again'] == 'yes'){
-				$postdata['try_again'] = 1;
-			}else{
-				$postdata['try_again'] = 0;
-			}
 
 	    }
 
@@ -367,9 +325,6 @@
 	    */
 	    public function hook_after_delete($id) {
 	        //Your code here
-
-			Draw::where('prize_id',$id)->delete();
-			History_Draw::where('prize_id',$id)->delete();
 
 	    }
 

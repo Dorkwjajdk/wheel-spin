@@ -81,20 +81,14 @@
         @csrf
 
         <div class="form-group row">
-          <label style="color: white"
-                 class="col-sm-2 col-form-label col-form-label-lg"
-                 for="">Nama</label>
-          <div class="col-sm-10">
-            <input type="text" name="nama" class="form-control form-control-lg" id="id_nama" required>
+          <div class="col-sm-12">
+            <input type="text" name="nama" placeholder="Nama" class="form-control form-control-lg" id="id_nama" required>
           </div>
         </div>
 
         <div class="form-group row">
-          <label style="color: white"
-                 class="col-sm-2 col-form-label col-form-label-lg"
-                 for="">Code</label>
-          <div class="col-sm-10">
-            <input type="text" name="code" class="form-control form-control-lg" id="id_code" required>
+          <div class="col-sm-12">
+            <input type="text" name="code" placeholder="code / voucher" class="form-control form-control-lg" id="id_code" required>
           </div>
         </div>
 

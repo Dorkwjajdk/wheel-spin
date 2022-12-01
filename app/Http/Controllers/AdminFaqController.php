@@ -151,7 +151,15 @@
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->pre_index_html = null;
+	        $this->pre_index_html = '
+			<div class="callout callout-info">
+			<h4>Perhatian !!!</h4>
+			<ol>
+			
+				<li>Silahkan isi untuk syarat dan ketentuan spin </li>
+			</ol>
+			</div>';
+	        
 	        
 	        
 	        

@@ -82,13 +82,13 @@
 
         <div class="form-group row">
           <div class="col-sm-12">
-            <input type="text" name="nama" placeholder="Nama" class="form-control form-control-lg" id="id_nama" required>
+            <input type="text" name="nama" placeholder="Username" class="form-control form-control-lg" id="id_nama" required>
           </div>
         </div>
 
         <div class="form-group row">
           <div class="col-sm-12">
-            <input type="text" name="code" placeholder="code / voucher" class="form-control form-control-lg" id="id_code" required>
+            <input type="text" name="code" placeholder="Code / Voucher" class="form-control form-control-lg" id="id_code" required>
           </div>
         </div>
 

@@ -149,7 +149,7 @@ input.submit {
 
 </style>
 
-<body class="text-center">
+<body class="text-center" onload="zoom()">
 
   <div class="container">
 <div class="row h-100 mx-auto" style="height:100%!important">
@@ -183,16 +183,6 @@ input.submit {
 </div>
 
 </div>
-
-<!-- LIVE CHAT -->
-<!-- Start of LiveChat (www.livechat.com) code -->
-<script>
-  window.__lc = window.__lc || {};
-  window.__lc.license = 14765202;
-  ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-</script>
-<noscript><a href="https://www.livechat.com/chat-with/14765202/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-<!-- End of LiveChat code -->
 
 
 <script charset="utf-8" src="https://d3js.org/d3.v3.min.js"></script>
@@ -256,6 +246,12 @@ document.oncontextmenu = function (e) {e.preventDefault(); return false;}
             }
 
 </script>
+<script type="text/javascript">
+  function zoom() {
+      document.body.style.zoom = "90%" 
+  }
+</script>
+
 <script src="{{url('assets/wheel/js/script.js')}}?version=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

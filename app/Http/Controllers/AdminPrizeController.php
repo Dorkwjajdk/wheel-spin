@@ -185,7 +185,22 @@
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->pre_index_html = null;
+	        $this->pre_index_html = '
+			<div class="callout callout-info">
+			<h4>Perhatian !!!</h4>
+			<ol>
+				<li>Total Hadiah Sudah Di Tetukan 10, Tinggal Di Edit Saja Sesui Kebutuhan (Edit Nama hadiah, dan tentukan hadiah itu menang atau kalah dengan tanda checklist dan silang)</li>
+				<li>Pastikan sorter sudah urut dari 1 - 10</li>
+				<li>Status silahkan tentukan dari setiap hadian win / lose , menang atau kalah</li>
+				<li>Pastikan untuk hadiah yang win / menang, statusnya harus win , jangan sampai di buat status lose
+				nanti akan berefect saat hasil undian di putar users
+				</li>
+				<li>
+					Retry use hanya digunakan jika untuk free spin, jika tidak digunakan freespin silahkan pilih x
+				</li>
+				<li>Jika ingin menambah atau mengurangi hadiah silahkan, edit juga gambar wheel di content web</li>
+			</ol>
+			</div>';
 	        
 	        
 	        

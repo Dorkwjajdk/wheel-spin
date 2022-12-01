@@ -189,7 +189,18 @@
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->pre_index_html = null;
+	        $this->pre_index_html = '
+			<div class="callout callout-info">
+			<h4>Perhatian !!!</h4>
+			<ol>
+			
+				<li>Silahkan tentukan hadiah untuk setiap ticket atau kode </li>
+				<li>tanda sent checklist artinya kode sudah digunakan. jika silang ticket belum digunakan</li>
+				<li> retry use hanya untuk kode yg di set freespin </li>
+				<li> History ticket users, silahkan klik button history draw di kanan </li>
+			</ol>
+			</div>';
+	        
 	        
 	        
 	        

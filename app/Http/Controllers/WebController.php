@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Prize;
 use App\Draw;
 use App\History_Draw;
+use App\Log_Access;
 use App\Code;
 use App\Faq;
 use Helper;
@@ -13,6 +14,7 @@ use Helper;
 class WebController extends Controller
 {
     public function index(){
+        Log_Access::saveData('visit spin',date('H:i:s'));
         $data['title']   = 'Draw Spin';
         $data['faq']     = Faq::all();
         $data['history'] = History_Draw::getData();

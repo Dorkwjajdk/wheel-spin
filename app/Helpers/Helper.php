@@ -6,6 +6,30 @@ use App\Prize;
  
 class Helper {
 
+    public static function replace_last_character($string) {
+        $arr_split = str_split($string);
+        $jum_str = strlen($string);//bisa juga dengan count($arr_split)
+        
+        $replace_with = '*';
+        $replace_start = $jum_str - 2;
+        
+        if ($replace_start < 0) {
+            return $string;
+        }
+        
+        $str_fmt = '';
+        for ($i=0;$i<$jum_str;$i++) {
+            if ($i < $replace_start) {
+                $str_fmt .= $arr_split[$i];
+            } else {
+                $str_fmt .= $replace_with;
+            }
+        }
+        
+        return $str_fmt;
+    }
+    
+
     public static function wheel_rotation($prize_id){
 
         $prize = Prize::where('id',$prize_id)->first();

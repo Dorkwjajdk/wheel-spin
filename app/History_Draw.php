@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use CRUDBooster;
 use Illuminate\Database\Eloquent\Model;
 
 class History_Draw extends Model
@@ -28,5 +28,14 @@ class History_Draw extends Model
                 ->get();
         
                 return $data->toArray();
+    }
+
+    public static function getDataPaginate($paginate){
+        $data = History_Draw::join('prize','history_draw.prize_id','=','prize.id')
+                ->select('history_draw.*','prize.label as prize')
+                ->orderBy('history_draw.created_at','desc')
+                ->paginate($paginate);
+        
+                return $data;
     }
 }

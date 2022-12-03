@@ -4,80 +4,48 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use App\Prize;
+	use App\Draw;
+	use App\History_Draw;
+	use App\Log_Access;
+	use App\Code;
+	use Helper;
 
-	class AdminDrawController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminDashboardController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "nama";
+			$this->title_field = "id";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
+			$this->button_add = false;
 			$this->button_edit = true;
 			$this->button_delete = true;
 			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "draw";
+			$this->table = "dashboard";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Nama","name"=>"nama"];
-			$this->col[] = ["label"=>"Code","name"=>"code"];
-			$this->col[] = ["label"=>"Rotation","name"=>"rotation"];
-			$this->col[] = ["label"=>"Date","name"=>"date"];
-			$this->col[] = ["label"=>"Prize Id","name"=>"prize_id","join"=>"prize,label"];
-			$this->col[] = ["label"=>"Winner","name"=>"prize_id","join"=>"prize,winner"];
-			$this->col[] = ["label"=>"Retry Used","name"=>"retry_used","callback"=>function($row) {
-				if($row->retry_used == 1){
-					$img = url('assets/img/done.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}else{
-					$img = url('assets/img/close.png');
-					$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-				}
-				return $r;
-				}];
-			$this->col[] = ["label"=>"Sent","name"=>"sent","callback"=>function($row) {
-					if($row->sent == 1){
-						$img = url('assets/img/done.png');
-						$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-					}else{
-						$img = url('assets/img/close.png');
-						$r = '<img style="widht: 20px;height: 20px;" src="'.$img.'"/>';
-					}
-					return $r;
-					}];
+
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Nama','name'=>'nama','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Code','name'=>'code','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			// $this->form[] = ['label'=>'Sent','name'=>'sent','type'=>'checkbox','validation'=>'','width'=>'col-sm-10','dataenum'=>'yes'];
-			// $this->form[] = ['label'=>'Rotation','name'=>'rotation','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-2'];
-			$this->form[] = ['label'=>'Date','name'=>'date','type'=>'date','validation'=>'required|date','width'=>'col-sm-2'];
-			$this->form[] = ['label'=>'Prize Id','name'=>'prize_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'prize,label'];
-			// $this->form[] = ['label'=>'Retry Used','name'=>'retry_used','type'=>'checkbox','validation'=>'','width'=>'col-sm-10','dataenum'=>'yes'];
+
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Nama","name"=>"nama","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
-			//$this->form[] = ["label"=>"Code","name"=>"code","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Sent","name"=>"sent","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Rotation","name"=>"rotation","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Date","name"=>"date","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
-			//$this->form[] = ["label"=>"Prize Id","name"=>"prize_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"prize,id"];
-			//$this->form[] = ["label"=>"Retry Used","name"=>"retry_used","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
 			# OLD END FORM
 
 			/* 
@@ -93,7 +61,6 @@
 	        | 
 	        */
 	        $this->sub_module = array();
-			$this->sub_module[] = ['label'=>'History Draw','path'=>'history_draw','parent_columns'=>'name,code','foreign_key'=>'draw_id','button_color'=>'success','button_icon'=>'fa fa-bars'];
 
 
 	        /* 
@@ -189,18 +156,7 @@
 	        | $this->pre_index_html = "<p>test</p>";
 	        |
 	        */
-	        $this->pre_index_html = '
-			<div class="callout callout-info">
-			<h4>Perhatian !!!</h4>
-			<ol>
-				<li>LANGKAH PERTAMA GENERETE TICKET ATAU CODE</li>
-				<li>Silahkan tentukan hadiah untuk setiap ticket atau kode </li>
-				<li>tanda sent checklist artinya kode sudah digunakan. jika silang ticket belum digunakan</li>
-				<li> retry use hanya untuk kode yg di set freespin </li>
-				<li> History ticket users, silahkan klik button history draw di kanan </li>
-			</ol>
-			</div>';
-	        
+	        $this->pre_index_html = null;
 	        
 	        
 	        
@@ -299,19 +255,6 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-			$postdata['rotation'] = 10;
-
-			if($postdata['sent'] == 'yes'){
-				$postdata['sent'] = 1;
-			}else{
-				$postdata['sent'] = 0;
-			}
-
-			if($postdata['retry_used'] == 'yes'){
-				$postdata['retry_used'] = 1;
-			}else{
-				$postdata['retry_used'] = 0;
-			}
 
 	    }
 
@@ -337,17 +280,6 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-			if($postdata['sent'] == 'yes'){
-				$postdata['sent'] = 1;
-			}else{
-				$postdata['sent'] = 0;
-			}
-
-			if($postdata['retry_used'] == 'yes'){
-				$postdata['retry_used'] = 1;
-			}else{
-				$postdata['retry_used'] = 0;
-			}
 
 	    }
 
@@ -387,6 +319,27 @@
 
 	    }
 
+
+		public function getIndex() {
+			//First, Add an auth
+			 if(!CRUDBooster::isView()) CRUDBooster::redirect(CRUDBooster::adminPath(),trans('crudbooster.denied_access'));
+			 
+			 //Create your own query 
+			 $data = [];
+			 $data['page_title'] = 'Dashboard';
+			 $data['draw']       = Draw::count();
+			 $data['win']        = Draw::join('prize','draw.prize_id','=','prize.id')
+			 						->where('prize.winner',1)
+									->count();
+			$data['lose']        = Draw::join('prize','draw.prize_id','=','prize.id')
+									->where('prize.winner',0)
+								   ->count();
+			$data['users']      = Log_Access::count();
+			$data['history']    = History_Draw::getDataPaginate(10);
+			  
+			 //Create a view. Please use `view` method instead of view method from laravel.
+			 return $this->view('dashboard',$data);
+		  }
 
 
 	    //By the way, you can still create your own method in here... :) 

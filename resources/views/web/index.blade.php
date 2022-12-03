@@ -36,7 +36,7 @@
               @foreach($history as $his)
                 <tr>
                   <td style="width: 10%; padding: 5px; text-align: center;">{{ $n++ }}</td>
-                  <td style="width: 50%; padding: 5px;">{{ $his['nama'] }}</td>
+                  <td style="width: 50%; padding: 5px;">{{ Helper::replace_last_character($his['nama']) }}</td>
                   <td style="width: 40%; padding: 5px; text-align: center;">{{ $his['prize'] }}</td>
                 </tr>
               @endforeach

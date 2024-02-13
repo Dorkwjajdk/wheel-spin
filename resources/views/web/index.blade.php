@@ -112,7 +112,7 @@
 
           <div class="col-md-12" style="margin-top: 20px;">
             <input type="button" value="KEMBALI KE SITUS" class="btn-back" 
-            onClick="location.href='https://langkah4d.net/'"></input>
+            onClick="location.href='https://witoto.com/'"></input>
          </div>
 
       </div>

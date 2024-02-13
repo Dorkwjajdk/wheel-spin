@@ -32,11 +32,10 @@
 .btn-back{
     font-size: 22px;
     width: 100%;
-    background: linear-gradient(to bottom, #02abff 16%, #02abff 44%, #02abff 99%);
+    background: linear-gradient(to bottom,  #c1c1f5 16%, #E6E6FA 44%, #7e7eff 99%);
     color:rgb(0, 0, 0);
-    padding: 5px 15px;
+    padding: 5px 20px;
     border:0px;
-    box-shadow: 2px 2px 2px grey;
     border-radius: 30px;
     font-weight: bolder;
 }
@@ -44,22 +43,22 @@
 button.submit {
     font-size: 22px;
     width: 100%;
-    background: linear-gradient(to bottom, #ecad00 16%, #ffd563 44%, #ecad00 99%);
+    background: linear-gradient(to bottom, #FFD700 16%, #ffd563 44%, #e9890c 99%);
     color:rgb(0, 0, 0);
-    padding: 5px 15px;
+    padding: 5px 20px;
     border:0px;
-    box-shadow: 2px 2px 2px grey;
+    box-shadow: 2px 2px 2px #c3914c;
     border-radius: 30px;
 }
 
 input.submit {
     font-size: 22px;
     width: 100%;
-    background: linear-gradient(to bottom, #ecad00 16%, #ffd563 44%, #ecad00 99%);
+    background: linear-gradient(#FFD700, #ffd563, #e9890c);
     color:rgb(0, 0, 0);
-    padding: 5px 15px;
+    padding: 5px 20px;
     border:0px;
-    box-shadow: 2px 2px 2px grey;
+    box-shadow: 2px 2px 2px #c3914c;
     border-radius: 30px;
     font-weight: bolder;
 }
